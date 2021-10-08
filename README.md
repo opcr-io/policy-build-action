@@ -25,12 +25,6 @@ Policy bundle revision
 
 Default: "${GITHUB_SHA}"
 
-### `server`
-
-**Required** The registry service hostname. 
-
-Default: `opcr.io`
-
 ### `verbosity`
 
 **Required** The logging verbosity level [ `info` | `error` | `debug` | `trace` ] used.

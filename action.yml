@@ -16,10 +16,6 @@ inputs:
     description: "policy bundle revision"
     required: true
     default: "${GITHUB_SHA}"
-  server:
-    description: "registry service hostname"
-    required: true
-    default: "opcr.io"
   verbosity:
     description: "verbosity level [info|error|debug|trace]"
     required: true
