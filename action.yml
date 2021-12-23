@@ -22,5 +22,5 @@ inputs:
     default: error
 runs:
   using: docker
-  image: 'docker://ghcr.io/opcr-io/policy:0.0'
+  image: 'docker://ghcr.io/opcr-io/policy:0.1'
   entrypoint: /app/build.sh
