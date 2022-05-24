@@ -20,6 +20,10 @@ inputs:
     description: "verbosity level [info|error|debug|trace]"
     required: true
     default: error
+  source_url:
+    description: "source git url of the policy"
+    required: true
+    default: "${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}"
 runs:
   using: docker
   image: 'docker://ghcr.io/opcr-io/policy:0.1'
