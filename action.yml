@@ -26,5 +26,5 @@ inputs:
     default: "${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}"
 runs:
   using: docker
-  image: 'docker://ghcr.io/opcr-io/policy:0.1'
+  image: 'docker://ghcr.io/opcr-io/policy:0.2'
   entrypoint: /app/build.sh
