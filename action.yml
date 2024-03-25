@@ -25,9 +25,9 @@ inputs:
     required: true
     default: "${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}"
   rego_version:
-    description: "rego version used to build (default | rego.v1)"
+    description: "rego version used to build (rego.v0 | rego.v1)"
     required: false
-    default: default
+    default: rego.v0
 runs:
   using: docker
   image: 'docker://ghcr.io/opcr-io/policy:0.2'
