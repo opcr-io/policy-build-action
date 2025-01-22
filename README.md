@@ -31,6 +31,10 @@ Default: "${GITHUB_SHA}"
 
 Default: `error`
 
+## `rego_version`
+
+The rego version used to build the policy image.
+Default: `rego.v0`
 
 ## Outputs
 
