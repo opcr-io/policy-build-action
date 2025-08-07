@@ -28,6 +28,10 @@ inputs:
     description: "rego version used to build (rego.v0 | rego.v1)"
     required: false
     default: rego.v0
+  optimize:
+    description: "bundle build optimization level [disabled|recommended|aggressive]"
+    required: true
+    default: disabled
 runs:
   using: docker
   image: 'docker://ghcr.io/opcr-io/policy:0.2'
