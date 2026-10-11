@@ -1,6 +1,6 @@
 name: "Policy Build"
 description: "Build policy"
-author: "Aserto Inc."
+author: "gert@d5s.io"
 branding:
   icon: zap
   color: blue
@@ -27,8 +27,12 @@ inputs:
   rego_version:
     description: "rego version used to build (rego.v0 | rego.v1)"
     required: false
-    default: rego.v0
+    default: rego.v1
+  optimize:
+    description: "bundle build optimization level [disabled|recommended|aggressive]"
+    required: true
+    default: disabled
 runs:
   using: docker
-  image: 'docker://ghcr.io/opcr-io/policy:0.2'
+  image: 'docker://ghcr.io/opcr-io/policy:0.4'
   entrypoint: /app/build.sh

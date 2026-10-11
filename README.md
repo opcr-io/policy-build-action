@@ -31,10 +31,27 @@ Default: "${GITHUB_SHA}"
 
 Default: `error`
 
-## `rego_version`
+### `optimize`
 
-The rego version used to build the policy image.
-Default: `rego.v0`
+**Required** The bundle build optimization level [ `disabled` | `recommended` | `aggressive`] used.
+
+Default: `disabled`
+
+[Documentation](https://www.openpolicyagent.org/docs/policy-performance#optimization-levels)
+
+### `entrypoint`
+
+Slash separated entrypoint path
+
+Default: `` (empty string) 
+
+**Required** when used in combination with --optimize=[`recommended` | `aggressive`]
+
+### `rego_version`
+
+The rego version used to build the policy image [ `rego.v0` | `rego.v1` ].
+
+Default: `rego.v1`
 
 ## Outputs
 
@@ -58,33 +75,37 @@ jobs:
     name: build
     steps:
 
-    - uses: actions/checkout@v4
-
-    - name: Policy Login
+    - 
+      uses: actions/checkout@v7
+    - 
+      name: Policy Login
       id: policy-login
-      uses: opcr-io/policy-login-action@v3
+      uses: opcr-io/policy-login-action@v7
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         username: policy-bot
         password: "$GITHUB_TOKEN"
-
-    - name: Policy Build
+    - 
+      name: Policy Build
       id: policy-build
-      uses: opcr-io/policy-build-action@v3
+      uses: opcr-io/policy-build-action@v4
       with:
         src: peoplefinder/src
-        tag: datadude/peoplefinder:$(sver -n patch)
+        tag: demo/peoplefinder:$(svu patch)
         revision: "$GITHUB_SHA"
-
-    - name: Policy Push
+        optimize: aggressive
+    - 
+      name: Policy Push
       id: policy-push
-      uses: opcr-io/policy-push-action@v3
+      uses: opcr-io/policy-push-action@v4
       with:
-        tag: datadude/peoplefinder:$(sver -n patch)
-
-    - name: Policy Logout
+        tag: demo/peoplefinder:$(svu patch)
+    - 
+      name: Policy Logout
       id: policy-logout
-      uses: opcr-io/policy-logout-action@v3
+      uses: opcr-io/policy-logout-action@v4
 
 ```
+
+> NOTE: The above example leverages the `svu` (semantic version utility) from https://github.com/caarlos0/svu
